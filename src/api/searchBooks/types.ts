@@ -1,11 +1,11 @@
 export interface ISearchBookInputs {
-  filter: filter;
-  langRestrict: string; // Too much types
-  maxResults: number;
-  orderBy: orderBy;
-  printType: printType;
-  projection: projection;
-  q: string;
+  filter?: filter;
+  langRestrict?: string; // Too much types
+  maxResults?: number;
+  orderBy?: orderBy;
+  printType?: printType;
+  projection?: projection;
+  query: string;
 }
 
 type filter = 'partial' | 'full' | 'free-ebooks' | 'paid-ebooks' | 'ebooks';

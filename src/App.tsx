@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes } from './routes';
+import { Providers } from './context';
 
-const App:React.FC = ()=> <Routes/>
+const App: React.FC = () => <Providers />;
 export default App;

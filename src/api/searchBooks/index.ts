@@ -2,6 +2,7 @@ import { IGoogleAPIBookResponse } from '../../interfaces/GoogleAPI.interface';
 import { httpServices } from '../../services/httpService';
 import { GOOGLE_API_KEY } from '../../config/variables';
 import { checkGoogleResponse } from '../../typeguards/googleResponse';
+import { ISearchBookInputs } from './types';
 
 interface ApiResponseSuccess {
   error: false;
@@ -13,13 +14,25 @@ interface ApiResponseError {
 }
 
 //ApiResponseSuccess|ApiResponseError
-export const searchBook = async (): Promise<
-  ApiResponseSuccess | ApiResponseError
-> => {
+export const searchBook = async ({
+  filter,
+  langRestrict,
+  maxResults,
+  orderBy,
+  printType,
+  projection,
+  query,
+}: ISearchBookInputs): Promise<ApiResponseSuccess | ApiResponseError> => {
   try {
     const response = await httpServices().get('/', {
       params: {
-        q: 'flowers+inauthor:keyes',
+        q: query,
+        filter,
+        langRestrict,
+        maxResults,
+        orderBy,
+        printType,
+        projection,
         key: GOOGLE_API_KEY,
       },
     });
