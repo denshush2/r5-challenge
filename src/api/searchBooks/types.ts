@@ -6,6 +6,7 @@ export interface ISearchBookInputs {
   printType?: printType;
   projection?: projection;
   query: string;
+  multiple: boolean;
 }
 
 type filter = 'partial' | 'full' | 'free-ebooks' | 'paid-ebooks' | 'ebooks';

@@ -1,9 +1,11 @@
 import React from 'react';
+import { LoadgingPage } from './styles';
+import GoogleLogo from '../../assets/img/googleBooksLogo.svg';
 
 export const LoadingScreen: React.FC = () => {
   return (
-    <div>
-      <h1>Loading Screen</h1>
-    </div>
+    <LoadgingPage>
+      <img src={GoogleLogo} width="300px" alt="Google Logo" />
+    </LoadgingPage>
   );
 };

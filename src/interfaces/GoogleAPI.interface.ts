@@ -1,7 +1,14 @@
-import { IBook } from "./Book.interface";
+import { IBook } from './Book.interface';
 
-export interface IGoogleAPIBookResponse {
-    kind: string
-    totalItems: number
-    items:IBook[]
-}
+export type IGooleAPIBooksResponseList = {
+  book: IBook;
+  books: {
+    kind: string;
+    totalItems: number;
+    items: IBook[];
+  };
+};
+
+export type IGoogleAPIBooksResponse<
+  T extends keyof IGooleAPIBooksResponseList
+> = IGooleAPIBooksResponseList[T];

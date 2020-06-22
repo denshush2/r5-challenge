@@ -1,18 +1,33 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { BooksContext } from '../../context/Books';
+import { Header } from '../../components/Header';
+import { HomeComponent, InputSearchComponent } from './styles';
+import { searchPlaceholderText } from './constants';
+import { BooksSection } from '../../containers/BooksSection';
+import { AppContext } from '../../context/App';
+import { LoadingScreen } from '../../components/LoadingScreen';
 
 export const HomeScreen: React.FC = () => {
-  //   const { loadBooks } = useContext(BooksContext);
-  //   useEffect(() => {
-  //     const test = async () => {
-  //       const response = await loadBooks({ query: 'None' });
-  //       console.log('Response', response);
-  //     };
-  //     test();
-  //   }, []);
+  const { appLoading } = useContext(AppContext);
+
+  const { loadBooks, books } = useContext(BooksContext);
+  const [searchKey, setsearchKey] = useState<string>('');
+
+  if (appLoading) return <LoadingScreen />;
   return (
-    <div>
-      <h1>Books</h1>
-    </div>
+    <HomeComponent>
+      <Header />
+      <InputSearchComponent
+        placeholder={searchPlaceholderText}
+        onKeyPress={(event) =>
+          event.key === 'Enter' &&
+          loadBooks({ query: searchKey, multiple: true })
+        }
+        onChange={(event) => {
+          setsearchKey(event.target.value);
+        }}
+      />
+      {books && <BooksSection books={books} />}
+    </HomeComponent>
   );
 };

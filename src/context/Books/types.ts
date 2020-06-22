@@ -4,5 +4,6 @@ import { ISearchBookInputs } from '../../api/searchBooks/types';
 
 export interface IBooksContext {
   books: IBook[] | undefined;
-  loadBooks: ({}: ISearchBookInputs) => Promise<boolean>;
+  loadBooks: ({}: ISearchBookInputs) => Promise<void>;
+  resetBooks: () => void;
 }

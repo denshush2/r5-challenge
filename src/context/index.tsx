@@ -1,12 +1,12 @@
 import React from 'react';
 import { AppProvider } from './App';
 import { BooksProvider } from './Books';
-import { Routes } from '../routes';
+import App from '../App';
 
 export const Providers: React.FC = () => (
   <AppProvider>
     <BooksProvider>
-      <Routes />
+      <App />
     </BooksProvider>
   </AppProvider>
 );
